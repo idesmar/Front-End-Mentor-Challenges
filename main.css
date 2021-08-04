@@ -219,14 +219,14 @@ ol {
     width: 100%;
   }
 }
-.main-container .faq-sect header {
+.main-container .faq-sect h2 {
   color: #1d1e35;
   font-weight: 700;
   font-size: 2rem;
   padding-bottom: 1.375rem;
 }
 @media (max-width: 78.125em) {
-  .main-container .faq-sect header {
+  .main-container .faq-sect h2 {
     text-align: center;
     padding-bottom: 1rem;
   }
