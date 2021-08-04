@@ -1,0 +1,267 @@
+// * media query per element structure used
+// longer code and can be repetitive but easier to understand compared grouping elements under each media query
+// TODO initiate GIT and send to GITHUB
+// * use GitHub Pages for deployment
+
+@use 'base' as *;
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  min-height: 100vh;
+  background-image: linear-gradient($s-violet, $s-blue);
+  display: flex;
+  flex-direction: column; // * remove later; testing use only
+  justify-content: center;
+  position: relative;
+}
+
+*,
+*::before,
+*::after {
+  transition: 500ms ease-in;
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+
+ol {
+  list-style: none;
+}
+
+
+.outer-container {
+  position: relative;
+  margin: 
+    calc((129 / #{$idVh}) * 100vh)
+    calc((239 / #{$idVw}) * 100vw)
+    calc((130 / #{$idVh}) * 100vh)
+    calc((281 / #{$idVw}) * 100vw);
+    // ? 129 239 130 281
+  box-shadow: 0 80px 40px -40px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: $desk-mid) {
+    width: max(500px, 60%);
+    margin: 9.25rem auto 5.3125rem;// 148px auto 85px;
+  }
+  
+  @media (max-width: $mob) {
+    width: unset; // ? unset or initial?
+    margin: 9.25rem 1.5rem 5.3125rem;// 148px 24px 85px;
+  }
+
+  &.mob-view::before {
+    opacity: 0;
+
+    @media (max-width: $mob) {
+      content: url(images/bg-pattern-mobile.svg);
+      width: calc(240 * (100vw / #{$idmVw}));
+      // ? w: 240, h: 104
+      -webkit-animation: fade-in 2s linear 200ms forwards;
+              animation: fade-in 2s linear 200ms forwards;
+      
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+  }
+
+  &.mob-view::after {
+    @media (max-width: $mob) {
+      content: url(images/illustration-woman-online-mobile.svg);
+      // ? w: 266, h: 196
+      width: calc(266 * 100vw / #{$idmVw});
+      
+      transition: 1200ms;
+      -webkit-animation: fade-in 1500ms;
+      animation: fade-in 1500ms;
+      
+      position: absolute;
+      top: calc(-115 * (100vw / #{$idmVw}));
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+  }
+}
+
+.inner-container {
+
+  &.desk-view-box::after {
+    content: url(images/illustration-box-desktop.svg);
+    position: absolute;
+    top: 12.75rem; // 204px;
+    left: -5.875rem; // -94px;
+
+    @media (max-width: $desk-mid) {
+      left: calc(50% - 15.625rem); // 250px);
+    }
+
+    @media (max-width: $mob) {
+      opacity: 0;
+      top: 5rem; // 80px;
+    }
+  }
+}
+
+
+.main-container {
+  background-color: white;
+  min-height: 31.8125rem; // 509px;
+  padding: 4.375rem 5.875rem 0; // 70px 94px 0;
+  border-radius: 1.25rem; // 20px;
+  overflow: hidden;
+  
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  @media (max-width: $desk-mid) {
+    min-height: 57rem; // 896px
+    padding: 30rem 3.125rem 2rem;// 480px 50px 32px;
+    justify-content: center;
+  }
+  
+  @media (max-width: $mob) {
+    min-height: 33.4375rem; // 34rem; // 544px;
+    padding: 8.5rem 6.4% 1.25rem; // 136px 6.4% 20px;
+    display: block;
+  }
+  
+  
+  &.desk-view::before {
+    content: url(images/bg-pattern-desktop.svg);
+    position: absolute;
+    top: -18.4375rem; // -295px;
+    left: -36.0625rem; // -577px;
+
+    @media (max-width: $desk-mid) {
+      opacity: 1;
+      top: -12.5rem; // -200px;
+      left: 50%;
+      transform: 
+        translateX(-50%)
+        scale(50%);
+    }
+
+    @media (max-width: $mob) {
+      opacity: 0;
+      top: 0;
+    }
+  }
+
+
+  &.desk-view::after {
+    content: url(images/illustration-woman-online-desktop.svg);
+    position: absolute;
+    top: 4.375rem; // 70px;
+    left: -5.25rem; // -84px;
+
+    @media (max-width: $desk-mid) {
+      left: 50%;
+      transform: translateX(-50%);   
+    }
+
+    @media (max-width: $mob) {
+      opacity: 0;
+      top: 0;
+    }
+  }
+
+
+  .faq-sect {
+    width: 47.95%;
+    font-size: 0.875rem; // 14px;
+    position: relative;
+    z-index: 99;
+    
+    @media (max-width: $desk-mid) {
+      width: 80%;
+    }
+    
+    @media (max-width: $mob) {
+      width: 100%;
+    }
+
+    header {
+      color: $vdd-blue;
+      font-weight: 700;
+      font-size: 2rem; // 32px;
+      padding-bottom: 1.375rem; // 22px;
+
+      @media (max-width: $desk-mid) {
+        text-align: center;
+        padding-bottom: 1rem; // 16px;
+      }
+    }
+  }
+}
+
+
+li.qa-segment {
+  border-bottom: 0.0625rem solid $divider; // 1px
+  padding: 1.2rem 0 0.85rem; // 20px 0 ??px 0;
+  position: relative;
+  z-index: 99;
+}
+
+p.query {
+  color: $vdg-blue;
+  cursor: pointer;
+  position: relative;
+  padding-right: 1rem; // 16px;
+  padding-bottom: 0.35rem; // ??px
+  
+  &.active {
+    font-weight: 700;
+
+    &::after {
+      transform: rotate(540deg);
+    }
+  }
+
+	&:hover {
+    color: $s-red;
+	}
+
+  &::after {
+    content: url(images/icon-arrow-down.svg);
+    position: absolute;
+    top: 0;
+    right: 1rem; // 16px;
+    transform: rotate(0deg);
+    transition: 
+      transform 900ms 
+      cubic-bezier(0.22, 0, 0.77, 2.2); // * confused arrow
+
+    @media (max-width: $desk-mid) {
+      right: 0;
+    }
+  }
+}
+
+div.answer {
+  color: $dg-blue;
+  font-size: 0.75rem; // 12px;
+  line-height: 1.125rem; // 18px;
+  max-height: 0;
+  padding-top: 0;
+  opacity: 0;	
+  transition: 400ms ease-out;
+	
+  &.show { 
+    max-height: 6rem; // 96px;
+    // padding-top: 0.6875rem; // 11px;
+    padding-top: 1rem;
+    position: relative;
+    opacity: 1;
+    transition: 400ms ease-in;
+  }
+}
