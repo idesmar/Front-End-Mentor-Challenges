@@ -37,14 +37,14 @@ btn[0].onclick = function () {
 		}
 	}
 
-	if (ret === 0) {
-		console.log(true)
-		return true
-	}
-	else {
-		console.log(false)
-		return false
-	}
+	// if (ret === 0) {
+	// 	console.log(true)
+	// 	return true
+	// }
+	// else {
+	// 	console.log(false)
+	// 	return false
+	// }
 }
 
 const classToggler = (me, change) => {
