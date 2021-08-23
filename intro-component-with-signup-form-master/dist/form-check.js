@@ -7,7 +7,7 @@ const btn = document.getElementsByClassName('button')
 btn[0].onclick = function () {
 
 	const inputColl = document.getElementsByTagName('input')
-	let ret = 0
+	// let ret = 0
 
 	for (let i = 0; i < inputColl.length; i++) {
 		let input = inputColl[i]
