@@ -23,7 +23,7 @@ btn[0].onclick = function () {
 			let = errMsg = `${inputLabel} cannot be empty`
 
 			errorAlert(input, 'add', errMsg)
-			ret++
+			// ret++
 		}
 		else if (input.type === 'email') {
 			let invalid = !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input.value)
@@ -32,7 +32,7 @@ btn[0].onclick = function () {
 			if (invalid) {
 				errMsg = 'Looks like this is not a valid email'
 				errorAlert(input, 'add', errMsg)
-				ret++
+				// ret++
 			}
 		}
 	}
