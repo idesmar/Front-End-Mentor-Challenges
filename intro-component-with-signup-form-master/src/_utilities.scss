@@ -1,0 +1,23 @@
+$ivw: 1440;
+$ivh: 800;
+
+@function ratio($fixed, $viewport) {
+	@if $viewport == vh {
+		@return $fixed / $ivh * 100vh;
+	}
+	@else if $viewport == vw {
+		@return $fixed / $ivw * 100vw;
+	}
+	@else { 
+		@return 0;
+	}
+}
+
+@mixin floating-label {
+	// height: fit-content;
+	padding: 0 5px;
+	top: 0;
+	transform: translateY(-50%);
+	left: 16px;
+	background-color: white;
+}

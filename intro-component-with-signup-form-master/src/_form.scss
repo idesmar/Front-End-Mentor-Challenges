@@ -1,0 +1,148 @@
+@use 'base' as *;
+@use 'utilities' as *;
+
+.trial-form {
+
+		input,
+		button {
+
+			display: block;
+			width: 100%;
+			border-radius: 6px;
+		}
+
+		.input-cont {
+
+			position: relative;
+			margin-bottom: 20px;
+
+			@media (max-width: $mob) {
+				margin-bottom: 15px;
+			}
+
+			@media (min-width: $desk-ideal) {
+				margin-bottom: ratio(20, vw);
+			}
+
+			input {
+				padding: 16px 31px 15px; //  adjusted inclusive of border
+				border-radius: 6px;
+				border: 1px solid $border-inactive; // change to inactive border
+
+				caret-color: $caret;
+				
+				@media (max-width: $mob) {
+					padding: 18px 31px 15px;
+				}
+
+				@media (min-width: $desk-ideal) {
+					padding: ratio(16, vw) ratio(31, vw) ratio(15, vw);
+				}
+
+				&.error-input {
+					padding: 15px 28px 14px;
+					padding-right: 78px;
+					border: 2px solid $err-clr;
+				}
+				
+				&:active,
+				&:focus {
+					border: 1px solid $drk-blue;
+					outline: none;
+
+					&.error-input,
+					&.error-input {
+						border-width: 2px;
+						// border: 2px solid $drk-blue;
+					}
+				}
+			}
+
+
+			.label {
+				position: absolute;
+				top: 17px; // disregarded border since pos:absolute
+				left: 32px;
+				height: fit-content;
+				border-radius: 100vw;
+
+				// cursor: text;
+				pointer-events: none;
+				transition: 200ms ease-out;
+
+				@media (max-width: $mob) {
+					left: 19px;
+				}
+
+				@media (min-width: $desk-ideal) {
+					top: ratio(17, vw);
+					left: ratio(32, vw);
+				}
+
+				&.error-found {
+					@include floating-label;
+				}
+			}
+
+			input:active ~ .label,
+			input:focus ~ .label,
+			input:not(:placeholder-shown) ~ .label {
+
+				@include floating-label;
+				transition: 200ms ease-in;
+			}
+
+			&.error-icon {
+				margin-bottom: 42px;
+
+				@media (min-width: $desk-ideal) {
+					margin-bottom: ratio(42, vw);
+				}
+
+				&::after {
+					content: url(images/icon-error.svg);
+					position: absolute;
+					width: 24px;
+					height: 24px;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					margin: auto 27px;
+
+					@media (min-width: $desk-ideal) {
+						width: ratio(24, vw);
+						height: ratio(24, vw);
+						margin: auto ratio(27, vw);
+					}
+				}
+			}
+
+			.error-msg {
+				padding: 6px 0;
+				position: absolute;
+				top: 100%;
+				right: 0;
+			}
+		}
+
+		button {
+			// TODO needs to be exact. focus on borders (2px is used on default right and bottom)
+			// padding: 16px 0; // from figma
+			padding: 15px 0 11px; // adjusted inclusive of border
+			background-color: $claim;
+
+			$btn-shadow: hsla(0, 0%, 0%, 0.08);
+			border: 2px solid $btn-shadow;
+			border-bottom: 4px solid $btn-shadow;
+
+			cursor: pointer;
+
+			@media (min-width: $desk-ideal) {
+				padding: ratio(15, vw) 0 ratio(11, vw);
+			}
+			
+			&:hover {
+				background-color: $claim-hover;
+			}
+		}
+	}
