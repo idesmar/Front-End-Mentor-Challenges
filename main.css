@@ -51,7 +51,7 @@ body::after {
 
 .main {
   width: 34.2361111111vw;
-  margin-top: 6.0625rem;
+  margin-top: 0.5rem;
   margin-right: 5.4166666667vw;
 }
 @media (max-width: 51em) {
@@ -64,11 +64,6 @@ body::after {
   .main {
     display: block;
     width: 100%;
-  }
-}
-@media (min-width: 90em) {
-  .main {
-    margin-top: 12.125vh;
   }
 }
 .main p {
@@ -313,7 +308,7 @@ body {
   font-weight: 700;
   line-height: 3.4375rem;
 }
-@media (max-width: calc(31.25em - 6.25rem)) {
+@media (max-width: calc(31.25em - 6.25em)) {
   .main h1 {
     font-size: 1.75rem;
     line-height: 2.25rem;
