@@ -15,21 +15,6 @@
 
   <title>Frontend Mentor | Intro component with sign up form</title>
 
-  <!-- TODO move style later on -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
 </head>
 
 <body>
@@ -40,36 +25,34 @@
       understanding how developers think is invaluable.</p>
   </main>
 
-  <section class="form-sect">
+  <section class="form-sect" aria-label="form">
     <h2 class="form-sect__header"><span class="semi-bold">Try it free 7 days</span><span class="reg"> then $20/mo.
         thereafter</span></h2>
 
     <div class="form-cont">
-
-      <form class="trial-form" action="#" autocomplete="off" method="POST">
+      <form class="trial-form" id="trialForm" action="#" autocomplete="off" method="POST" novalidate>
 
         <div class="input-cont">
-          <input type="text" name="first-name" id="first-name" placeholder=" " required>
+          <input type="text" name="first-name" id="first-name" placeholder=" ">
           <label for="first-name" class="label">First Name</label>
         </div>
 
         <div class="input-cont">
-          <input type="text" name="last-name" id="last-name" placeholder=" " required>
-          <label for="first-name" class="label">Last Name</label>
+          <input type="text" name="last-name" id="last-name" placeholder=" ">
+          <label for="last-name" class="label">Last Name</label>
         </div>
 
         <div class="input-cont">
-          <input type="email" name="email" id="email" placeholder=" " required>
+          <input type="email" name="email" id="email" placeholder=" ">
           <label for="email" class="label">Email Address</label>
         </div>
 
         <div class="input-cont">
-          <input type="password" name="password" id="password" placeholder=" " required>
+          <input type="password" name="password" id="password" placeholder=" ">
           <label for="password" class="label">Password</label>
         </div>
 
-        <!-- type="submit" may auto-submit form without validating -->
-        <button class="button" type="button">Claim your free trial</button>
+        <button class="button" type="submit">Claim your free trial</button>
       </form>
       <div class="tnc-agreement">By clicking the button, you are agreeing to our <a href="#" class="tnc-link">Terms and
           Services</a></div>
@@ -85,7 +68,6 @@
     </p>
   </footer>
 
-  <script src="form-check.js"></script>
+  <script src="form-checker.js"></script>
 </body>
-
 </html>
