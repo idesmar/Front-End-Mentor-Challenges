@@ -3,148 +3,151 @@
 // pseudo class :has that can solve issue of child affecting parent is not yet supported
 
 .trial-form {
+	input,
+	button {
+		display: block;
+		width: 100%;
+		border-radius: 0.375rem; // 6px;
+	}
 
-		input,
-		button {
+	.input-cont {
+		position: relative;
+		margin-bottom: 1.25rem; // 20px;
 
-			display: block;
-			width: 100%;
-			border-radius: 0.375rem; // 6px;
+		@media (max-width: $mob) {
+			margin-bottom: 0.9375rem; // 15px;
 		}
 
-		.input-cont {
+		@media (min-width: $desk-ideal) {
+			margin-bottom: ratio(20, vw);
+		}
 
-			position: relative;
-			margin-bottom: 1.25rem; // 20px;
+		input {
+			padding: 1rem 1.9375rem 0.9375rem; // 16px 31px 15px; // adjusted inclusive of border
+			border-radius: 0.375rem; // 6px;
+			border: 1px solid $border-inactive; // change to inactive border
+
+			caret-color: $caret;
 
 			@media (max-width: $mob) {
-				margin-bottom: 0.9375rem; // 15px;
+				padding: 1.125rem 1.9375rem 0.9375rem; // 18px 31px 15px;
 			}
 
 			@media (min-width: $desk-ideal) {
-				margin-bottom: ratio(20, vw);
+				padding: ratio(16, vw) ratio(31, vw) ratio(15, vw);
 			}
 
-			input {
-				padding: 1rem 1.9375rem 0.9375rem; // 16px 31px 15px; // adjusted inclusive of border
-				border-radius: 0.375rem; // 6px;
-				border: 1px solid $border-inactive; // change to inactive border
+			&.error-input {
+				padding: 0.9375rem 1.75rem 0.875rem; // 15px 28px 14px;
+				padding-right: 4.875rem; // 78px;
+				border: 2px solid $err-clr;
+			}
 
-				caret-color: $caret;
-				
-				@media (max-width: $mob) {
-					padding: 1.125rem 1.9375rem 0.9375rem; // 18px 31px 15px;
-				}
+			&:active,
+			&:focus {
+				border: 1px solid $drk-blue;
+				outline: none;
 
-				@media (min-width: $desk-ideal) {
-					padding: ratio(16, vw) ratio(31, vw) ratio(15, vw);
-				}
-
+				&.error-input,
 				&.error-input {
-					padding: 0.9375rem 1.75rem 0.875rem; // 15px 28px 14px;
-					padding-right: 4.875rem; // 78px;
-					border: 2px solid $err-clr;
+					border-width: 2px;
 				}
-				
-				&:active,
-				&:focus {
-					border: 1px solid $drk-blue;
-					outline: none;
-
-					&.error-input,
-					&.error-input {
-						border-width: 2px;
-						// border: 2px solid $drk-blue;
-					}
-				}
-			}
-
-
-			.label {
-				position: absolute;
-				top: 1.0625rem; // 17px; // disregarded border since pos:absolute
-				left: 2rem; // 32px;
-				height: -webkit-fit-content;
-				height: -moz-fit-content;
-				height: fit-content;
-				border-radius: 100vw;
-
-				// cursor: text;
-				pointer-events: none;
-				transition: 200ms ease-out;
-
-				@media (max-width: $mob) {
-					left: 1.1875rem; // 19px;
-				}
-
-				@media (min-width: $desk-ideal) {
-					top: ratio(17, vw);
-					left: ratio(32, vw);
-				}
-
-				&.error-found {
-					@include floating-label;
-				}
-			}
-
-			input:active ~ .label,
-			input:focus ~ .label,
-			input:not(:placeholder-shown) ~ .label {
-
-				@include floating-label;
-				transition: 200ms ease-in;
-			}
-
-			&.error-icon {
-				margin-bottom: 2.625rem; // 42px;
-
-				@media (min-width: $desk-ideal) {
-					margin-bottom: ratio(42, vw);
-				}
-
-				&::after {
-					content: url(images/icon-error.svg);
-					position: absolute;
-					$dim: 1.5rem; // 24px
-					width: $dim;
-					height: $dim;
-					top: 0;
-					right: 0;
-					bottom: 0;
-					margin: auto 1.6875rem; // 27px;
-
-					@media (min-width: $desk-ideal) {
-						width: ratio(24, vw);
-						height: ratio(24, vw);
-						margin: auto ratio(27, vw);
-					}
-				}
-			}
-
-			.error-msg {
-				padding: 6px 0;
-				position: absolute;
-				top: 100%;
-				right: 0;
 			}
 		}
 
-		button {
-			padding: 0.9375rem 0 0.6875rem; // 15px 0 11px; // adjusted inclusive of border
-			background-color: $claim;
+		.label {
+			position: absolute;
+			top: 1.0625rem; // 17px; // disregarded border since pos:absolute
+			left: 2rem; // 32px;
+			height: -webkit-fit-content;
+			height: -moz-fit-content;
+			height: fit-content;
+			border-radius: 100vw;
 
-			$btn-shadow: hsla(0, 0%, 0%, 0.08);
-			border: 2px solid $btn-shadow;
-			border-bottom: 4px solid $btn-shadow;
+			// cursor: text;
+			pointer-events: none;
+			transition: 200ms ease-out;
 
-			cursor: pointer;
+			@media (max-width: $mob) {
+				left: 1.1875rem; // 19px;
+			}
 
 			@media (min-width: $desk-ideal) {
-				padding: ratio(15, vw) 0 ratio(11, vw);
+				top: ratio(17, vw);
+				left: ratio(32, vw);
 			}
-			
-			&:hover {
-				background-color: $claim-hover;
+
+			&.error-found {
+				@include floating-label;
 			}
+		}
+
+		input:active ~ .label,
+		input:focus ~ .label,
+		input:not(:placeholder-shown) ~ .label {
+			@include floating-label;
+			transition: 200ms ease-in;
+		}
+
+		&::after {
+			content: url(images/icon-error.svg);
+			position: absolute;
+			$dim: 1.5rem; // 24px
+			width: $dim;
+			height: $dim;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto 1.6875rem; // 27px;
+
+			opacity: 0;
+			pointer-events: none;
+
+			@media (min-width: $desk-ideal) {
+				width: ratio(24, vw);
+				height: ratio(24, vw);
+				margin: auto ratio(27, vw);
+			}
+		}
+
+		&.error-icon {
+			margin-bottom: 2.625rem; // 42px;
+
+			@media (min-width: $desk-ideal) {
+				margin-bottom: ratio(42, vw);
+			}
+
+			&::after {
+				opacity: 1;
+				pointer-events: auto;
+				transition: all 200ms ease-in;
+			}
+		}
+
+		.error-msg {
+			padding: 6px 0;
+			position: absolute;
+			top: 100%;
+			right: 0;
 		}
 	}
+
+	button {
+		padding: 0.9375rem 0 0.6875rem; // 15px 0 11px; // adjusted inclusive of border
+		background-color: $claim;
+
+		$btn-shadow: hsla(0, 0%, 0%, 0.08);
+		border: 2px solid $btn-shadow;
+		border-bottom: 4px solid $btn-shadow;
+
+		cursor: pointer;
+
+		@media (min-width: $desk-ideal) {
+			padding: ratio(15, vw) 0 ratio(11, vw);
+		}
+
+		&:hover {
+			background-color: $claim-hover;
+		}
+	}
+}
