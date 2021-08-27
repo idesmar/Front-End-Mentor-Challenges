@@ -64,6 +64,8 @@
 				position: absolute;
 				top: 1.0625rem; // 17px; // disregarded border since pos:absolute
 				left: 2rem; // 32px;
+				height: -webkit-fit-content;
+				height: -moz-fit-content;
 				height: fit-content;
 				border-radius: 100vw;
 
@@ -128,8 +130,6 @@
 		}
 
 		button {
-			// TODO needs to be exact. focus on borders (2px is used on default right and bottom)
-			// padding: 16px 0; // from figma
 			padding: 0.9375rem 0 0.6875rem; // 15px 0 11px; // adjusted inclusive of border
 			background-color: $claim;
 
