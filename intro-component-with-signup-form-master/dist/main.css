@@ -207,6 +207,8 @@ body::after {
   position: absolute;
   top: 1.0625rem;
   left: 2rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   border-radius: 100vw;
   pointer-events: none;
@@ -240,6 +242,25 @@ body::after {
   background-color: white;
   transition: 200ms ease-in;
 }
+.trial-form .input-cont::after {
+  content: url(images/icon-error.svg);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto 1.6875rem;
+  opacity: 0;
+  pointer-events: none;
+}
+@media (min-width: 90em) {
+  .trial-form .input-cont::after {
+    width: 1.6666666667vw;
+    height: 1.6666666667vw;
+    margin: auto 1.875vw;
+  }
+}
 .trial-form .input-cont.error-icon {
   margin-bottom: 2.625rem;
 }
@@ -249,21 +270,9 @@ body::after {
   }
 }
 .trial-form .input-cont.error-icon::after {
-  content: url(images/icon-error.svg);
-  position: absolute;
-  width: 1.5rem;
-  height: 1.5rem;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto 1.6875rem;
-}
-@media (min-width: 90em) {
-  .trial-form .input-cont.error-icon::after {
-    width: 1.6666666667vw;
-    height: 1.6666666667vw;
-    margin: auto 1.875vw;
-  }
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 200ms ease-in;
 }
 .trial-form .input-cont .error-msg {
   padding: 6px 0;
