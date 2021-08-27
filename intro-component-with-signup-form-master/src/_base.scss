@@ -1,8 +1,8 @@
-$desk-ideal: 1440px;
-$desk-mid: 816px;
-$mob: 500px;
+$desk-ideal: 90em; // 1440px;
+$desk-mid: 51em; // 816px;
+$mob: 31.25em; // 500px;
 
-$mid-cont-w: max(60vw, 400px);
+$mid-cont-w: max(60vw, 25rem); // 400px
 
 $red-bg: hsl(0, 100%, 74%);
 $claim: hsl(154, 59%, 51%);

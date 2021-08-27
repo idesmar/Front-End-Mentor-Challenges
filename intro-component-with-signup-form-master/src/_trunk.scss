@@ -1,0 +1,150 @@
+@use 'index' as *;
+
+body {
+	position: relative;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	min-height: 100vh;
+	// ? line below is causing overflow
+	// padding: ratio(121, vh) ratio(164, vw) ratio(121, vh) ratio(165, vw);
+	padding: 4.8125rem 0; // 77px 0;
+	background-color: $red-bg;
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: ratio(14, vw);
+		right: ratio(14, vw);
+		bottom: 0;
+		z-index: -1;
+
+		background-image: url(images/bg-intro-desktop.png);
+		background-size: cover;
+
+		@media (max-width: $mob) {
+			left: 0;
+			right: 0;
+			inset: 0; // new css property
+
+			background-image: url(images/bg-intro-mobile.png);
+		}
+	}
+
+	@media (max-width: $desk-mid) {
+		flex-direction: column;
+	}
+
+	@media (max-width: $mob) {
+		padding: 1.75rem 1.5rem 4.25rem; // 28px 24px 68px;
+	}
+}
+
+.main {
+	width: ratio(493, vw);
+	// margin: 174px 78px 168px 0;
+	// margin: #{ratio(97, vh)} #{ratio(78, vw)} #{ratio(91, vh)} 0; // adjusted with top bottom border
+	margin-top: 6.0625rem; // 97px;
+	margin-right: #{ratio(78, vw)};
+
+	@media (max-width: $desk-mid) {
+		width: $mid-cont-w;
+		margin: 3.9375rem 0; // 63px 0;
+	}
+
+	@media (max-width: $mob) {
+		display: block;
+		width: 100%;
+	}
+
+	@media (min-width: $desk-ideal) {
+		margin-top: ratio(97, vh); // TODO NEEDS TO BE VALIDATED!!!!
+	}
+
+	p {
+		margin-top: 1.75rem; // 28px;
+
+		@media (min-width: $desk-ideal) {
+			margin-top: ratio(28, vw);
+		}
+	}
+}
+
+.form-sect {
+	// ? line below is causing an overflow
+	width: ratio(540, vw);
+	min-width: 23.25rem; // 372px;
+	align-self: center;
+
+	@media (max-width: $desk-mid) {
+		width: $mid-cont-w;
+	}
+
+	@media (max-width: $mob) {
+		width: 100%;
+		min-width: auto;
+	}
+
+	&__header {
+		padding: 1.1875rem 1.5rem 1.0625rem; // 19px 24px 17px;
+		margin-bottom: 1.5rem; // 24px;
+		border-radius: 0.5rem; // 8px;
+
+		background-color: $blu-head;
+
+		box-shadow: inset 0px 0px 2px 1px $head-border-clr, 0px 0px 2px 1px $head-glow-clr,
+			0px 8px 0px hsla(0, 0%, 0%, 0.15); // lower shadow
+
+		@media (max-width: $mob) {
+			padding-left: 4.875rem; // 78px;
+			padding-right: 4.875rem; // 78px;
+		}
+
+		@media (min-width: $desk-ideal) {
+			padding: ratio(19, vw) ratio(24, vw) ratio(17, vw);
+			margin-bottom: ratio(24, vw);
+			border-radius: ratio(8, vw); // TODO using em might be better
+		}
+	}
+
+	.form-cont {
+		padding: 2.5rem 2.5rem 2.5625rem; // 40px 40px 41px;
+		border-radius: 0.625rem; // 10px;
+
+		background-color: white;
+		box-shadow: 0px 8px 0px hsla(67, 100%, 5%, 0.25);
+
+		@media (max-width: $mob) {
+			padding: 1.5rem 1.5rem 1.4375rem; // 24px 24px 23px;
+		}
+
+		@media (min-width: $desk-ideal) {
+			padding: ratio(40, vw) ratio(40, vw) ratio(41, vw);
+			border-radius: ratio(10, vw); // TODO using em might be better
+		}
+
+		.tnc-agreement {
+			padding-top: 12px; // adjusted by new line height
+
+			@media (max-width: $mob) {
+				padding: 0.75rem 1.3125rem 0; // 12px 21px 0;
+			}
+		}
+	}
+}
+
+.attribution {
+	font-size: 11px;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}

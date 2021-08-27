@@ -1,12 +1,11 @@
-$ivw: 1440;
-$ivh: 800;
-
-@function ratio($fixed, $viewport) {
+@function ratio($man-input, $viewport) {
+	$ivw: 1440;
+	$ivh: 800;
 	@if $viewport == vh {
-		@return $fixed / $ivh * 100vh;
+		@return $man-input / $ivh * 100vh;
 	}
 	@else if $viewport == vw {
-		@return $fixed / $ivw * 100vw;
+		@return $man-input / $ivw * 100vw;
 	}
 	@else { 
 		@return 0;
@@ -15,9 +14,9 @@ $ivh: 800;
 
 @mixin floating-label {
 	// height: fit-content;
-	padding: 0 5px;
+	padding: 0 0.3125rem; // 5px;
 	top: 0;
 	transform: translateY(-50%);
-	left: 16px;
+	left: 1rem; // 16px;
 	background-color: white;
 }

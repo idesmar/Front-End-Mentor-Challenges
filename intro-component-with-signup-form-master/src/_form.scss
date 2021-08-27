@@ -1,5 +1,6 @@
-@use 'base' as *;
-@use 'utilities' as *;
+@use 'index' as *;
+
+// pseudo class :has that can solve issue of child affecting parent is not yet supported
 
 .trial-form {
 
@@ -8,16 +9,16 @@
 
 			display: block;
 			width: 100%;
-			border-radius: 6px;
+			border-radius: 0.375rem; // 6px;
 		}
 
 		.input-cont {
 
 			position: relative;
-			margin-bottom: 20px;
+			margin-bottom: 1.25rem; // 20px;
 
 			@media (max-width: $mob) {
-				margin-bottom: 15px;
+				margin-bottom: 0.9375rem; // 15px;
 			}
 
 			@media (min-width: $desk-ideal) {
@@ -25,14 +26,14 @@
 			}
 
 			input {
-				padding: 16px 31px 15px; //  adjusted inclusive of border
-				border-radius: 6px;
+				padding: 1rem 1.9375rem 0.9375rem; // 16px 31px 15px; // adjusted inclusive of border
+				border-radius: 0.375rem; // 6px;
 				border: 1px solid $border-inactive; // change to inactive border
 
 				caret-color: $caret;
 				
 				@media (max-width: $mob) {
-					padding: 18px 31px 15px;
+					padding: 1.125rem 1.9375rem 0.9375rem; // 18px 31px 15px;
 				}
 
 				@media (min-width: $desk-ideal) {
@@ -40,8 +41,8 @@
 				}
 
 				&.error-input {
-					padding: 15px 28px 14px;
-					padding-right: 78px;
+					padding: 0.9375rem 1.75rem 0.875rem; // 15px 28px 14px;
+					padding-right: 4.875rem; // 78px;
 					border: 2px solid $err-clr;
 				}
 				
@@ -61,8 +62,8 @@
 
 			.label {
 				position: absolute;
-				top: 17px; // disregarded border since pos:absolute
-				left: 32px;
+				top: 1.0625rem; // 17px; // disregarded border since pos:absolute
+				left: 2rem; // 32px;
 				height: fit-content;
 				border-radius: 100vw;
 
@@ -71,7 +72,7 @@
 				transition: 200ms ease-out;
 
 				@media (max-width: $mob) {
-					left: 19px;
+					left: 1.1875rem; // 19px;
 				}
 
 				@media (min-width: $desk-ideal) {
@@ -93,7 +94,7 @@
 			}
 
 			&.error-icon {
-				margin-bottom: 42px;
+				margin-bottom: 2.625rem; // 42px;
 
 				@media (min-width: $desk-ideal) {
 					margin-bottom: ratio(42, vw);
@@ -102,12 +103,13 @@
 				&::after {
 					content: url(images/icon-error.svg);
 					position: absolute;
-					width: 24px;
-					height: 24px;
+					$dim: 1.5rem; // 24px
+					width: $dim;
+					height: $dim;
 					top: 0;
 					right: 0;
 					bottom: 0;
-					margin: auto 27px;
+					margin: auto 1.6875rem; // 27px;
 
 					@media (min-width: $desk-ideal) {
 						width: ratio(24, vw);
@@ -128,7 +130,7 @@
 		button {
 			// TODO needs to be exact. focus on borders (2px is used on default right and bottom)
 			// padding: 16px 0; // from figma
-			padding: 15px 0 11px; // adjusted inclusive of border
+			padding: 0.9375rem 0 0.6875rem; // 15px 0 11px; // adjusted inclusive of border
 			background-color: $claim;
 
 			$btn-shadow: hsla(0, 0%, 0%, 0.08);
