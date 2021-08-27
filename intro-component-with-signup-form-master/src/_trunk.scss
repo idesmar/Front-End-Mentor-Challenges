@@ -46,8 +46,8 @@ body {
 .main {
 	width: ratio(493, vw);
 	// margin: 174px 78px 168px 0;
-	// margin: #{ratio(97, vh)} #{ratio(78, vw)} #{ratio(91, vh)} 0; // adjusted with top bottom border
-	margin-top: 6.0625rem; // 97px;
+	// margin-top: 6.0625rem; // 97px;
+	margin-top: 0.5rem;
 	margin-right: #{ratio(78, vw)};
 
 	@media (max-width: $desk-mid) {
@@ -58,10 +58,6 @@ body {
 	@media (max-width: $mob) {
 		display: block;
 		width: 100%;
-	}
-
-	@media (min-width: $desk-ideal) {
-		margin-top: ratio(97, vh); // TODO NEEDS TO BE VALIDATED!!!!
 	}
 
 	p {
