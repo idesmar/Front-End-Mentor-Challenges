@@ -1,0 +1,16 @@
+$desk-400: 37.5em; // 600
+$desk-700: 56.25em; // 900
+
+$cyan-900: hsl(183, 100%, 15%);
+$cyan-700: hsl(172, 67%, 45%);
+
+$dgc-700: hsl(186, 14%, 43%);
+$dgc-400: hsl(184, 14%, 56%);
+
+$lgc-700: hsl(185, 41%, 84%); // dash total && tip && body bgc
+$lgc-400: hsl(189, 41%, 97%); // closest input num from color picker
+
+// $inp-num: hsl(202, 50%, 97%); // input num from color picker
+$def-bc: hsl(173, 32%, 51%); // default border color
+$err-clr: hsl(8, 37%, 53%);
+$white: hsl(0, 0%, 100%);
