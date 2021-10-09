@@ -1,4 +1,4 @@
-const log = console.log
+// const log = console.log
 
 const billElement = document.querySelector('#bill')
 const tipRateElements = document.querySelectorAll('.tip-rate')
@@ -16,13 +16,6 @@ const resetButton = document.querySelector('.reset')
 const inputElements = document.querySelectorAll('input')
 const dashboardSegment = document.querySelectorAll('.dash-seg')
 
-
-
-const simpleAnim = () => {
-	document.querySelector('.main-cont').classList.toggle('simple-anim')
-}
-const animationAfterLoading = window.addEventListener('load', simpleAnim)
-const removeAnimationAfterDelay = window.setTimeout(simpleAnim, 5000)
 
 const DEC = '.'
 const SEP = ','
@@ -523,6 +516,17 @@ const getTipRateButtonValues = tipRateElements.forEach(el => {
 	}
 })
 
+
+/*
+	performance faster (from 40's to 80's) with animation at end
+	compared to located at start. setTimeout also delays other
+	procedures after it.
+*/
+const simpleAnim = () => {
+	document.querySelector('.main-cont').classList.toggle('simple-anim')
+}
+const animationAfterLoading = window.addEventListener('load', simpleAnim)
+const removeAnimationAfterDelay = window.setTimeout(simpleAnim, 3000)
 
 /*
 	Safari Web Browser
