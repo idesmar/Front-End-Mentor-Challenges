@@ -44,6 +44,7 @@ input:focus, input:hover {
 .sr-only {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   height: 1px;
   margin: -1px;
@@ -74,6 +75,8 @@ input:focus, input:hover {
 @media (min-width: 37.5em) {
   .main-cont {
     min-width: 35rem;
+    max-width: -webkit-min-content;
+    max-width: -moz-min-content;
     max-width: min-content;
   }
 }
@@ -82,6 +85,8 @@ input:focus, input:hover {
     margin-bottom: 7.8125rem;
     width: unset;
     min-width: 57.5rem;
+    max-width: -webkit-min-content;
+    max-width: -moz-min-content;
     max-width: min-content;
     display: flex;
     gap: 1.875rem;
@@ -132,18 +137,27 @@ input:focus, input:hover {
   left: -150%;
   width: 80vw;
   transform: skew(30deg);
+  -webkit-animation: shine 2s;
   animation: shine 2s;
+  -webkit-animation-delay: 1s;
   animation-delay: 1s;
   pointer-events: none;
 }
 @media (min-width: 37.5em) {
   .main-cont.simple-anim::before {
+    -webkit-animation-duration: 2.3s;
     animation-duration: 2.3s;
   }
 }
 @media (min-width: 56.25em) {
   .main-cont.simple-anim::before {
+    -webkit-animation-duration: 2.8s;
     animation-duration: 2.8s;
+  }
+}
+@-webkit-keyframes shine {
+  60% {
+    left: 150%;
   }
 }
 @keyframes shine {
@@ -203,6 +217,18 @@ input:focus, input:hover {
   background-color: #26c0ab;
   color: #00494d;
 }
+.rates-cont .tip-rate.rate-input::-webkit-input-placeholder {
+  text-align: center;
+}
+.rates-cont .tip-rate.rate-input::-moz-placeholder {
+  text-align: center;
+}
+.rates-cont .tip-rate.rate-input:-ms-input-placeholder {
+  text-align: center;
+}
+.rates-cont .tip-rate.rate-input::-ms-input-placeholder {
+  text-align: center;
+}
 .rates-cont .tip-rate.rate-input::placeholder {
   text-align: center;
 }
@@ -220,6 +246,8 @@ input:focus, input:hover {
   margin-bottom: 2.0625rem;
 }
 .dashboard .dash-seg__label {
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   margin-right: 1rem;
   font-size: 1rem;
@@ -249,6 +277,7 @@ input:focus, input:hover {
 }
 .dashboard .dash-seg .tip-per-person.norm-font, .dashboard .dash-seg .total-per-person.norm-font {
   font-size: 2rem;
+  -webkit-animation: pop-font-norm 500ms;
   animation: pop-font-norm 500ms;
 }
 @media (min-width: 37.5em) {
@@ -258,6 +287,7 @@ input:focus, input:hover {
 }
 .dashboard .dash-seg .tip-per-person.min-font, .dashboard .dash-seg .total-per-person.min-font {
   font-size: 1.5rem;
+  -webkit-animation: pop-font-min 500ms;
   animation: pop-font-min 500ms;
 }
 @media (min-width: 37.5em) {
@@ -265,7 +295,23 @@ input:focus, input:hover {
     font-size: 2rem;
   }
 }
+@-webkit-keyframes pop-font-norm {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 @keyframes pop-font-norm {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes pop-font-min {
   0% {
     transform: scale(0.95);
   }
@@ -295,6 +341,7 @@ input:focus, input:hover {
   position: absolute;
   background-color: #00494d;
   opacity: 0.9;
+  -webkit-filter: saturate(2);
   filter: saturate(2);
   top: 0;
   left: 0;
