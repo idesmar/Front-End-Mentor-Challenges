@@ -137,22 +137,22 @@ input:focus, input:hover {
   left: -150%;
   width: 80vw;
   transform: skew(30deg);
-  -webkit-animation: shine 2s;
-  animation: shine 2s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
+  -webkit-animation: shine 1.2s;
+  animation: shine 1.2s;
+  -webkit-animation-delay: 500ms;
+  animation-delay: 500ms;
   pointer-events: none;
 }
 @media (min-width: 37.5em) {
   .main-cont.simple-anim::before {
-    -webkit-animation-duration: 2.3s;
-    animation-duration: 2.3s;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
   }
 }
 @media (min-width: 56.25em) {
   .main-cont.simple-anim::before {
-    -webkit-animation-duration: 2.8s;
-    animation-duration: 2.8s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
   }
 }
 @-webkit-keyframes shine {
