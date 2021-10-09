@@ -1,7 +1,6 @@
 @use 'root' as *;
 @use 'trunk';
 
-// TODO RUN AUTOPREFIXER
 
 .logo {
 	margin: 3.125rem 1.5rem 1.5rem; // 50 40
@@ -21,12 +20,16 @@
 	
 	@media (min-width: $desk-400) {
 		min-width: 35rem;
+		max-width: -webkit-min-content;
+		max-width: -moz-min-content;
 		max-width: min-content;
 	}
 	@media (min-width: $desk-700) {
 		margin-bottom: 7.8125rem; // 125
 		width: unset;
 		min-width: 57.5rem; // 920
+		max-width: -webkit-min-content;
+		max-width: -moz-min-content;
 		max-width: min-content;
 		display: flex;
 		gap: 1.875rem; // 30
@@ -78,16 +81,24 @@
 		left: -150%;
 		width: 80vw;
 		transform: skew(30deg);
-		animation: shine 2s;
-		animation-delay: 1s;
+		-webkit-animation: shine 2s;
+		        animation: shine 2s;
+		-webkit-animation-delay: 1s;
+		        animation-delay: 1s;
 		pointer-events: none;
 
 		@media (min-width: $desk-400) {
-			animation-duration: 2.3s;
+			-webkit-animation-duration: 2.3s;
+			        animation-duration: 2.3s;
 		}
 		@media (min-width: $desk-700) {
-			animation-duration: 2.8s;
+			-webkit-animation-duration: 2.8s;
+			        animation-duration: 2.8s;
 		}
+	}
+
+	@-webkit-keyframes shine {
+		60% { left: 150%; }
 	}
 
 	@keyframes shine {
@@ -96,7 +107,7 @@
 }
 
 .data-entry {
-	
+
 	.de-seg {
 		&__label {
 			display: flex;
@@ -162,6 +173,22 @@
 
 		&.rate-input {
 
+			&::-webkit-input-placeholder {
+				text-align: center;
+			}
+
+			&::-moz-placeholder {
+				text-align: center;
+			}
+
+			&:-ms-input-placeholder {
+				text-align: center;
+			}
+
+			&::-ms-input-placeholder {
+				text-align: center;
+			}
+
 			&::placeholder {
 				text-align: center;
 			}
@@ -188,6 +215,8 @@
 		&__label {
 			// display: flex;
 			// flex-direction: column;
+			width: (-webkit-max-content);
+			width: (-moz-max-content);
 			width: (max-content);
 			margin-right: 1rem;
 			font-size: 1rem;
@@ -230,7 +259,8 @@
 			
 			&.norm-font {
 				font-size: 2rem;
-				animation: pop-font-norm $pop-duration;
+				-webkit-animation: pop-font-norm $pop-duration;
+				        animation: pop-font-norm $pop-duration;
 
 				@media (min-width: $desk-400) {
 					font-size: 3.125rem;
@@ -239,7 +269,8 @@
 
 			&.min-font {
 				font-size: 1.5rem;
-				animation: pop-font-min $pop-duration;
+				-webkit-animation: pop-font-min $pop-duration;
+				        animation: pop-font-min $pop-duration;
 
 				@media (min-width: $desk-400) {
 					font-size: 2rem;
@@ -253,7 +284,16 @@
 				transform: scale(1);
 			}
 
+			@-webkit-keyframes pop-font-norm {
+				0% { @include initial-pop() } 
+				100% { @include final-pop() }
+			}
+
 			@keyframes pop-font-norm {
+				0% { @include initial-pop() } 
+				100% { @include final-pop() }
+			}
+			@-webkit-keyframes pop-font-min {
 				0% { @include initial-pop() } 
 				100% { @include final-pop() }
 			}
@@ -278,7 +318,8 @@
 		position: absolute;
 		background-color: $cyan-900;
 		opacity: 0.9;
-		filter: saturate(2);
+		-webkit-filter: saturate(2);
+		        filter: saturate(2);
 		top: 0;
 		left: 0;
 		right: 0;
