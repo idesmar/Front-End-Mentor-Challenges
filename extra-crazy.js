@@ -81,7 +81,8 @@ const unmask = (num, wholeNumberOnly = false) => {
 
 class Currency {
 	format(num) {
-		// * fallback if type of num is !number
+		/* fallback if type of num is !number
+			 side note: argument = value; parameter = variable */
 		if (typeof num !== 'number') {
 			alert(`Attempting to parse ${typeof num}`)
 			num = parseFloat(unmask(num))
@@ -106,11 +107,7 @@ class Currency {
 	}
 
 	reformat(num) {
-		/*
-			theoretically faster than unmasking because it uses native codes
-			but relies on argument that have passed through unmasking + masking or share
-			a similar format as currency. side note: argument = value; parameter = variable
-		*/
+		// possibly a redundant function but lazy is strong 🤪🤪🤪
 		return num.includes(SEP) ? num.replaceAll(SEP, '') : num
 	}
 }
@@ -131,10 +128,9 @@ class Calculator {
 
 	compute() {
 		const roundUpToCent = (num) => {
-			/* It's better to pay more, than pay less! But not too much! 💸💸💸
+			/* 💸💸💸 It's better to pay more, than pay less! But not too much!
 			sample {bill: 105.10} * {tip-rate: 10} / {divisor: 5} = 210.2
 			return Math.ceil(210.2) = 211 / 100 = 2.11 tipPerPerson */
-			// let computedVal = ('$').concat((Math.ceil(num) / 100).toLocaleString('en-US'))
 			let computedVal = Math.ceil(num) / 100
 			return ('$').concat(currency.format(computedVal))
 		}
@@ -159,10 +155,8 @@ const calculator = new Calculator
 const adjustFont = () => {
 	dashboardSegment.forEach(el => {
 		let resultEl = el.lastElementChild
-		/*
-			reset required for font classes to activate animation
-			every time a calculation is made
-		*/
+		/* reset required for font classes to trigger
+			 animation every time a calculation is made */
 		if (el.classList.contains('stacked')) {
 			el.classList.remove('stacked')
 		}
@@ -178,8 +172,7 @@ const adjustFont = () => {
 		}
 		if (totalPerPerson.innerText.length > 11) {
 			resultEl.classList.add('min-font')
-		}
-		else {
+		} else {
 			resultEl.classList.add('norm-font')
 		}
 	})
@@ -205,7 +198,6 @@ const divisorErrorHandler = () => {
 const divisorErrorFinder = divisorElement.addEventListener('input', divisorErrorHandler)
 
 
-
 const resetRateChosenClass = () => {
 	tipRateElements.forEach(el => {
 		if (el.matches('.chosen')) {
@@ -216,8 +208,8 @@ const resetRateChosenClass = () => {
 
 const RESET_ALL = resetButton.addEventListener('click', (e) => {
 	/* Limits button executions 🤔🤔🤔
-		 button is always clickable unless blocked by non-clickable element
-		 which I am too lazy to add 🤪🤪🤪 */
+		 button always clickable unless blocked by non-clickable
+		 element which I am too lazy to add 🤪🤪🤪 */
 	if (e.target.classList.contains('active')) {
 		e.target.classList.remove('active')
 		billElement.value = ''
@@ -392,7 +384,6 @@ let DECkeyPressed = false // will be based on Event.data
 // * -------------------------------------
 
 
-
 // works best on desktop
 const inputHandler = (e) => {
 	let el = e.target
@@ -455,14 +446,12 @@ const keyupHandler = (e) => {
 		let lenChange_ = newValue_.length - oldValue.length
 
 		if (DECkeyPressed && oldValue.includes(DEC)) {
-			// newValue_ = oldValue
 			newCursorPosition_ = oldCursor
 			DECkeyPressed = false // * reset for future use
 		} else if (lenChange_ === 0 && oldValue.includes(DEC) && oldCursor > oldValue.indexOf(DEC)) {
 			newCursorPosition_ = oldCursor + 1
 		} else if (lenChange_ === 0 && oldValue.charAt(oldCursor - 1) === SEP) {
 			newValue_ = oldValue.slice(0, oldCursor - 2).concat(oldValue.slice(oldCursor))
-			// newValue_ = mask(unmask(newValue))
 			newCursorPosition_ = oldCursor - 2
 		} else {
 			newCursorPosition_ = oldCursor + lenChange_
