@@ -370,6 +370,23 @@ const setValueAndCursor = (el) => {
 }
 
 
+const keydownHandler = (e) => {
+	let el = e.target
+	let keyPress = e.key
+	let changeValueArrows = ['ArrowUp', 'Up', 'ArrowDown', 'Down']
+	if (changeValueArrows.includes(keyPress)) {
+		e.preventDefault()
+		el.removeEventListener('input', inputHandler)
+		changeValueWithArrow(el, keyPress)
+		el.addEventListener('input', inputHandler)
+	} else if (keyPress === 'Enter') {
+		e.preventDefault()
+		el.blur()
+	} else {
+		oldCursor = el.selectionStart
+		oldValue = el.value
+	}
+}
 
 
 // * GLOBAL variables --------------------
@@ -380,6 +397,8 @@ let limitRE
 let wholeNumGlobal
 let DECkeyPressed = false // will be based on Event.data
 // * -------------------------------------
+
+
 
 // works best on desktop
 const inputHandler = (e) => {
