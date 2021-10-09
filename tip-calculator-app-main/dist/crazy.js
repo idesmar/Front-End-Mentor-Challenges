@@ -1,3 +1,8 @@
+/*
+	First attempt FAILED because of mobile incompatibility
+	Learnt a lot from this failure however!
+*/
+
 const billElement = document.querySelector('#bill')
 const tipRateElements = document.querySelectorAll('.tip-rate')
 const tipRateCustomElement = document.querySelector('#custom-rate')
@@ -17,7 +22,9 @@ const simpleAnim = () => {
 	document.querySelector('.main-cont').classList.toggle('simple-anim')
 }
 const animationAfterLoading = window.addEventListener('load', simpleAnim)
-const removeAnimationAfterDelay = window.setTimeout(simpleAnim, 5000)
+const removeAnimationAfterDelay = window.addEventListener('load', () => {
+	setTimeout(simpleAnim, 4500)
+})
 
 class Currency {
 	format(num) {

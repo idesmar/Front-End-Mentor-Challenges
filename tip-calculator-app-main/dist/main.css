@@ -106,7 +106,6 @@ input:focus, input:hover {
   padding: 2.3125rem 1.5rem 1.5rem;
   background-color: #00494d;
   border-radius: 1rem;
-  min-width: 100%;
 }
 @media (min-width: 56.25em) {
   .main-cont .dashboard {
@@ -115,7 +114,6 @@ input:focus, input:hover {
     padding: 2.4375rem 2.4375rem 2.5rem 2.5rem;
     display: flex;
     flex-direction: column;
-    min-width: unset;
     width: 100%;
   }
 }
@@ -132,20 +130,20 @@ input:focus, input:hover {
   top: 0;
   bottom: 0;
   left: -150%;
-  width: 15rem;
+  width: 80vw;
   transform: skew(30deg);
-  animation: shine 2.1s;
+  animation: shine 2s;
   animation-delay: 1s;
   pointer-events: none;
 }
 @media (min-width: 37.5em) {
   .main-cont.simple-anim::before {
-    animation-duration: 2.8s;
+    animation-duration: 2.3s;
   }
 }
 @media (min-width: 56.25em) {
   .main-cont.simple-anim::before {
-    animation-duration: 3.5s;
+    animation-duration: 2.8s;
   }
 }
 @keyframes shine {
@@ -222,28 +220,65 @@ input:focus, input:hover {
   margin-bottom: 2.0625rem;
 }
 .dashboard .dash-seg__label {
-  display: flex;
-  flex-direction: column;
   width: max-content;
   margin-right: 1rem;
   font-size: 1rem;
   color: #f4fafa;
+}
+.dashboard .dash-seg__label * {
+  display: block;
 }
 .dashboard .dash-seg__label .pp {
   font-size: 0.875em;
   color: #7f9c9f;
   letter-spacing: -0.05em;
 }
-.dashboard .dash-seg .tip-per-person,
-.dashboard .dash-seg .total-per-person {
-  font-size: 2rem;
+.dashboard .dash-seg.stacked {
+  display: block;
+}
+.dashboard .dash-seg.stacked * {
+  display: block;
+}
+.dashboard .dash-seg.stacked > :last-child {
+  text-align: right;
+}
+.dashboard .dash-seg .tip-per-person, .dashboard .dash-seg .total-per-person {
   color: #26c0ab;
   letter-spacing: -0.05em;
+  transform-origin: 100% 50%;
+}
+.dashboard .dash-seg .tip-per-person.norm-font, .dashboard .dash-seg .total-per-person.norm-font {
+  font-size: 2rem;
+  animation: pop-font-norm 500ms;
 }
 @media (min-width: 37.5em) {
-  .dashboard .dash-seg .tip-per-person,
-.dashboard .dash-seg .total-per-person {
+  .dashboard .dash-seg .tip-per-person.norm-font, .dashboard .dash-seg .total-per-person.norm-font {
     font-size: 3.125rem;
+  }
+}
+.dashboard .dash-seg .tip-per-person.min-font, .dashboard .dash-seg .total-per-person.min-font {
+  font-size: 1.5rem;
+  animation: pop-font-min 500ms;
+}
+@media (min-width: 37.5em) {
+  .dashboard .dash-seg .tip-per-person.min-font, .dashboard .dash-seg .total-per-person.min-font {
+    font-size: 2rem;
+  }
+}
+@keyframes pop-font-norm {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes pop-font-min {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

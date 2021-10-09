@@ -1,6 +1,7 @@
 @use 'root' as *;
 @use 'trunk';
 
+// TODO RUN AUTOPREFIXER
 
 .logo {
 	margin: 3.125rem 1.5rem 1.5rem; // 50 40
@@ -14,7 +15,6 @@
 	padding: 2rem;
 	border-radius: 1.5rem; // 24
 	background-color: $white;
-	// background-color: #1a1a1a; // ? personal dark mode
 	color: $cyan-900;
 	box-shadow: 0 1.5rem 2rem 0 #00000030; // 0 24 64 0
 	transition: all ease-out 200ms;
@@ -51,15 +51,13 @@
 		padding: 2.3125rem 1.5rem 1.5rem; // 37 24 24;
 		background-color: $cyan-900;
 		border-radius: 1rem;
-		min-width: 100%;
 
 		@media (min-width: $desk-700) {
 			margin: 0;
 			margin-left: 1.125rem;
-			padding: 2.4375rem 2.4375rem 2.5rem 2.5rem; // 39 39 40 40 // 58
+			padding: 2.4375rem 2.4375rem 2.5rem 2.5rem; // 39 39 40 40
 			display: flex;
 			flex-direction: column;
-			min-width: unset;
 			width: 100%;
 		}
 	}
@@ -73,21 +71,22 @@
 		content: "";
 		background: $white;
 		opacity: 0.2;
+
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		left: -150%;
-		width: 15rem;
+		width: 80vw;
 		transform: skew(30deg);
-		animation: shine 2.1s;
+		animation: shine 2s;
 		animation-delay: 1s;
 		pointer-events: none;
 
 		@media (min-width: $desk-400) {
-			animation-duration: 2.8s;
+			animation-duration: 2.3s;
 		}
 		@media (min-width: $desk-700) {
-			animation-duration: 3.5s;
+			animation-duration: 2.8s;
 		}
 	}
 
@@ -97,6 +96,7 @@
 }
 
 .data-entry {
+	
 	.de-seg {
 		&__label {
 			display: flex;
@@ -186,13 +186,16 @@
 		}
 
 		&__label {
-			display: flex;
-			flex-direction: column;
+			// display: flex;
+			// flex-direction: column;
 			width: (max-content);
 			margin-right: 1rem;
-
 			font-size: 1rem;
 			color: $lgc-400;
+
+			* {
+				display: block;
+			}
 
 			.pp {
 				font-size: 0.875em;
@@ -201,14 +204,62 @@
 			}
 		}
 
-		.tip-per-person,
-		.total-per-person {
-			font-size: 2rem;
+
+		&.stacked {
+			display: block;		
+			* {
+				display: block;
+			}
+			> :last-child {
+				text-align: right;
+			}
+		}
+
+		.tip-per-person, .total-per-person {
 			color: $cyan-700;
 			letter-spacing: -0.05em;
+			// font-size: 2rem;
+			transform-origin: 100% 50%;
 
-			@media (min-width: $desk-400) {
-				font-size: 3.125rem; // 50;
+			
+			// @media (min-width: $desk-400) {
+			// 	font-size: 3.125rem; // 50
+			// }
+
+			$pop-duration: 500ms;
+			
+			&.norm-font {
+				font-size: 2rem;
+				animation: pop-font-norm $pop-duration;
+
+				@media (min-width: $desk-400) {
+					font-size: 3.125rem;
+				}
+			}
+
+			&.min-font {
+				font-size: 1.5rem;
+				animation: pop-font-min $pop-duration;
+
+				@media (min-width: $desk-400) {
+					font-size: 2rem;
+				}
+			}
+
+			@mixin initial-pop {
+				transform: scale(0.95);
+			}
+			@mixin final-pop {
+				transform: scale(1);
+			}
+
+			@keyframes pop-font-norm {
+				0% { @include initial-pop() } 
+				100% { @include final-pop() }
+			}
+			@keyframes pop-font-min {
+				0% { @include initial-pop() } 
+				100% { @include final-pop() }
 			}
 		}
 	}
