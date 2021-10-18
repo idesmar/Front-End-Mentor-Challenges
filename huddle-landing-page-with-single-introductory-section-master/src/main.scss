@@ -1,0 +1,39 @@
+@use 'root' as *;
+
+body {
+	min-height: 100vh;
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: center;
+	// align-items: center;
+	background-image: url('./images/bg-desktop.svg');
+	background-color: $Violet;
+	position: relative;
+	box-sizing: border-box;
+}
+
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+.logo {
+	padding: 3.4375rem 2.125rem; // 55 34
+}
+
+
+
+
+.attribution {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-size: 11px;
+	text-align: center;
+
+	a {
+		color: hsl(228, 45%, 44%);
+	}
+}

@@ -512,10 +512,14 @@ const getTipRateButtonValues = tipRateElements.forEach(el => {
 	procedures after it.
 */
 const simpleAnim = () => {
-	document.querySelector('.main-cont').classList.toggle('simple-anim')
+	const main = document.querySelector('.main-cont')
+	main.classList.toggle('simple-anim')
+	main.addEventListener('animationend', (e) => {
+		e.target.classList.toggle('simple-anim')
+	})
 }
 const animationAfterLoading = window.addEventListener('load', simpleAnim)
-const removeAnimationAfterDelay = window.setTimeout(simpleAnim, 3000)
+// const removeAnimationAfterDelay = window.setTimeout(simpleAnim, 3000)
 
 /*
 	Safari Web Browser

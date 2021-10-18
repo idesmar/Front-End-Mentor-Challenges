@@ -1,0 +1,31 @@
+body {
+  min-height: 100vh;
+  background-image: url("./images/bg-desktop.svg");
+  background-color: #674baf;
+  position: relative;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+.logo {
+  padding: 3.4375rem 2.125rem;
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: #3e52a3;
+}
+
+/*# sourceMappingURL=main.css.map */
