@@ -90,7 +90,6 @@ input:focus, input:hover {
     max-width: min-content;
     display: flex;
     gap: 1.875rem;
-    gap: 48px;
   }
 }
 .main-cont .data-entry {
